@@ -1,0 +1,48 @@
+{
+  "name": "dtc",
+  "description": "Doraemon's Treasure Chest",
+  "homepage": "https://github.com/wuyax/DTC",
+  "version": "1.0.0",
+  "keywords": [
+    "library"
+  ],
+  "author": "wuyax",
+  "scripts": {
+    "build": "npm run build-esm && npm run build-umd && npm run build-esm-sub && npm run build-umd-sub",
+    "build-esm": "node rollup.config.js -c",
+    "build-umd": "node rollup.config.js -c format=umd name=dtc",
+    "build-esm-sub": "node rollup.config.sub.js -c",
+    "build-umd-sub": "node rollup.config.sub.js -c format=umd name=dtc",
+    "test": ""
+  },
+  "main": "./dist/dtc.esm.min.js",
+  "engines": {
+    "node": ">= 1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuyax/DTC.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/plugin-transform-parameters": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "babel-eslint": "^8.2.6",
+    "chai": "^4.2.0",
+    "eslint": "^4.19.1",
+    "mocha": "^5.2.0",
+    "rollup": "^1.0.2",
+    "rollup-plugin-babel": "^4.2.0",
+    "rollup-plugin-cleanup": "^3.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-eslint": "^5.0.0",
+    "rollup-plugin-filesize": "^6.0.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-progress": "^1.0.0",
+    "rollup-plugin-terser": "^4.0.2"
+  },
+  "license": "MIT"
+}
