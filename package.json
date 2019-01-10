@@ -13,7 +13,7 @@
     "build-umd": "node rollup.config.js -c format=umd name=dtc",
     "build-esm-sub": "node rollup.config.sub.js -c",
     "build-umd-sub": "node rollup.config.sub.js -c format=umd name=dtc",
-    "test": ""
+    "test": "mocha --recursive"
   },
   "main": "./dist/dtc.esm.min.js",
   "engines": {
@@ -22,6 +22,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wuyax/DTC.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test",
+      "pre-push": "npm run test"
+    }
   },
   "dependencies": {},
   "devDependencies": {
@@ -33,6 +39,7 @@
     "babel-eslint": "^8.2.6",
     "chai": "^4.2.0",
     "eslint": "^4.19.1",
+    "husky": "^1.3.1",
     "mocha": "^5.2.0",
     "rollup": "^1.0.2",
     "rollup-plugin-babel": "^4.2.0",

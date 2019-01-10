@@ -5,11 +5,11 @@
  * @returns {Array} 
  * @author 魏彬  <weibin@jusfoun.comxxxx>
  * @example
- *   JFE.util.arrayConcat([1,2],[3,4],[5,6]) //[1,2,3,4,5,6]
+ *   dtc.util.arrayConcat([1,2],[3,4],[5,6]) //[1,2,3,4,5,6]
  */
 
-function arrayConcat(args) {
-    return [].concat.apply([], arguments);
+function arrayConcat(...args) {
+    return [].concat.apply([], args);
 }
 
 module.exports = arrayConcat
