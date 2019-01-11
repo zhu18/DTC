@@ -13,7 +13,8 @@
     "build-umd": "node rollup.config.js -c format=umd name=dtc",
     "build-esm-sub": "node rollup.config.sub.js -c",
     "build-umd-sub": "node rollup.config.sub.js -c format=umd name=dtc",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "readfile": "node ./readfile.js"
   },
   "main": "./dist/dtc.esm.min.js",
   "engines": {

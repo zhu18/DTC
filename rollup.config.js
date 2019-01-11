@@ -65,14 +65,14 @@ const inputOptionsMinify = {
   ]
 };
 const outputOptions = {
-  file: `./dist/dtc.${params.format || 'esm'}.js`,
+  file: `./dist/dtc.${params.format || 'es'}.js`,
   format: params.format || 'es',
   banner: config.banner,
   name: params.name || '',
   exports: 'named'
 };
 const outputOptionsMinify = {
-  file: `./dist/dtc.${params.format || 'esm'}.min.js`,
+  file: `./dist/dtc.${params.format || 'es'}.min.js`,
   format: params.format || 'es',
   banner: config.banner,
   name: params.name || '',

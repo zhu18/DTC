@@ -1,6 +1,4 @@
-import {
-    cookieSet
-} from './cookieSet.js'
+const cookieSet = require('./cookieSet')
 /**
  * 删除cookie。
  * @memberof  util

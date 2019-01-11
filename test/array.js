@@ -11,4 +11,10 @@ describe('Array', function() {
       expect(dtc.util.arrayConcat([1,2], {name: 2})).to.deep.equal([1,2,{name: 2}])
     })
   });
+  describe('max', function() {
+    it('should return the max number of the array pass in', function() {
+      expect(dtc.util.max([1,2,3,5,6,7])).to.be.equal(7)
+    })
+  })
 });
+
