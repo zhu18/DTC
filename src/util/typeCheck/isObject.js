@@ -15,10 +15,7 @@
  * // => true
  *
  * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
+ * // => true 
  *
  * _.isObject(null);
  * // => false

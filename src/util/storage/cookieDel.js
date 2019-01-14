@@ -3,13 +3,11 @@ const cookieSet = require('./cookieSet')
  * 删除cookie。
  * @memberof  util
  * @param { String } c_name cookie名称
- *  @author 褚甜甜  <ctt@jusfoun.com>
+ * @author 褚甜甜  <ctt@jusfoun.com>
  * @example
- *   JFE.util.cookieDel('xxx') 
+ *   dtc.util.cookieDel('cookieName') 
  */
 
-
-//删除cookies 
 function cookieDel(name) {
     cookieSet(name, "", -1);
 }

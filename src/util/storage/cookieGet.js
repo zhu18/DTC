@@ -1,10 +1,10 @@
 /**
- * 取得cookie。
+ * 取得cookie,如果没有找到则返回null
  * @memberof  util
  * @param { String } name cookie名称
  * @author 褚甜甜  <ctt@jusfoun.com>
  * @example
- *   JFE.util.cookieGet('xxx') 
+ *   dtc.util.cookieGet('cookieName') 
  */
 
 function cookieGet(name) {
@@ -19,4 +19,5 @@ function cookieGet(name) {
     }
     return null;
 }
+
 module.exports = cookieGet

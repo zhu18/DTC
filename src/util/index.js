@@ -5,15 +5,21 @@ const max = require('./array/max')
 const min = require('./array/min')
 const unique = require('./array/unique')
 
-/*-------------compare----------------*/
-const eq = require('./compare/eq')
-const isEqual = require('./compare/isEqual')
-const cloneDeep = require('./compare/cloneDeep')
+/*-------------commmon----------------*/
+const urlArgs = require('./common/urlArgs')
+
+/*-------------object----------------*/
+const eq = require('./object/eq')
+const isEqual = require('./object/isEqual')
+const cloneDeep = require('./object/cloneDeep')
 
 /*-------------storage----------------*/
 const cookieDel = require('./storage/cookieDel')
 const cookieGet = require('./storage/cookieGet')
 const cookieSet = require('./storage/cookieSet')
+
+/*-------------string----------------*/
+const excerpt = require('./string/excerpt')
 
 /*-------------typeCheck----------------*/
 const isArray = require('./typeCheck/isArray')
@@ -30,7 +36,9 @@ module.exports = {
   max,
   min,
   unique,
-  /*--compare--*/
+  /*--common--*/
+  urlArgs,
+  /*--object--*/
   eq,
   isEqual,
   cloneDeep,
@@ -38,6 +46,8 @@ module.exports = {
   cookieDel,
   cookieGet,
   cookieSet,
+  /*--string--*/
+  excerpt,
   /*--typeCheck--*/
   isArray,
   isEmptyObject,
