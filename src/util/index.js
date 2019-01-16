@@ -12,6 +12,8 @@ const urlArgs = require('./common/urlArgs')
 const eq = require('./object/eq')
 const isEqual = require('./object/isEqual')
 const cloneDeep = require('./object/cloneDeep')
+const merge = require('./object/merge')
+const merge2 = require('./object/merge2')
 
 /*-------------storage----------------*/
 const cookieDel = require('./storage/cookieDel')
@@ -20,6 +22,8 @@ const cookieSet = require('./storage/cookieSet')
 
 /*-------------string----------------*/
 const excerpt = require('./string/excerpt')
+const trim =  require('./string/trim')
+const uId = require('./string/uId')
 
 /*-------------typeCheck----------------*/
 const isArray = require('./typeCheck/isArray')
@@ -42,12 +46,16 @@ module.exports = {
   eq,
   isEqual,
   cloneDeep,
+  merge,
+  merge2,
   /*--storage--*/
   cookieDel,
   cookieGet,
   cookieSet,
   /*--string--*/
   excerpt,
+  trim,
+  uId,
   /*--typeCheck--*/
   isArray,
   isEmptyObject,

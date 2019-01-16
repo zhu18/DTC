@@ -1,6 +1,6 @@
 
 /**
-  * dtc V1.0.0
+  * dtc V1.0.2
   * (c) 2018-2019
   * Copyright all contributors
   * @license Released under MIT license.
