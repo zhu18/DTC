@@ -1,6 +1,6 @@
 const assert = require('chai').assert
 const expect = require('chai').expect
-const dtc = require('../dist/dtc.umd')
+const util = require('../dist/dtc.util.umd')
 
 describe('Object', function () {
   describe('merge2', function () {
@@ -16,7 +16,7 @@ describe('Object', function () {
         }
       }
     it('should merger two Object', function () {
-      expect(dtc.util.merge2({}, obj1, obj2)).to.have.all.keys('name', 'list', 'age', 'family')
+      expect(util.merge2({}, obj1, obj2)).to.have.all.keys('name', 'list', 'age', 'family')
     })
   })
 })
