@@ -5,17 +5,120 @@
   * Copyright all contributors
   * @license Released under MIT license.
   */
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
 /**
  * @author mrdoob / http://mrdoob.com/
  */
 var Stats = function Stats() {
+  var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    dragable: false,
+    x: 0,
+    y: 0,
+    container: null
+  };
   var mode = 0;
+  var isDrag = false;
+  var mousedownTime, mouseupTime;
   var container = document.createElement('div');
-  container.style.cssText = 'position:fixed;top:0;left:0;cursor:pointer;opacity:0.9;z-index:10000';
+  container.style.cssText = "position:fixed;top:".concat(option.y || 0, "px;left:").concat(option.x || 0, "px;cursor:pointer;opacity:0.9;z-index:10000");
   container.addEventListener('click', function (event) {
     event.preventDefault();
-    showPanel(++mode % container.children.length);
-  }, false); //
+
+    if (!isDrag) {
+      showPanel(++mode % container.children.length);
+    }
+  }, false);
+
+  if (option.dragable) {
+    container.addEventListener('mousedown', function (event) {
+      event.preventDefault();
+
+      if (isDrag) {
+        isDrag = false;
+      }
+
+      this.style.cursor = 'move';
+      mousedownTime = new Date().getTime();
+      move(event);
+    }, false);
+    container.addEventListener('mouseup', function (event) {
+      event.preventDefault();
+      mouseupTime = new Date().getTime();
+
+      if (mouseupTime - mousedownTime > 200) {
+        isDrag = true;
+      }
+
+      this.style.cursor = 'pointer';
+    }, false);
+    container.addEventListener('mouseout', function () {
+      event.preventDefault();
+      this.style.cursor = 'pointer';
+    }, false);
+  }
+  /**
+   * 移动
+   * @param {object} event 事件
+   */
+
+
+  function move(event) {
+    var offsetX = parseInt(container.getBoundingClientRect().left); // 获取当前的x轴距离
+
+    var offsetY = parseInt(container.getBoundingClientRect().top); // 获取当前的y轴距离
+
+    var innerX = event.clientX - offsetX; // 获取鼠标在方块内的x轴距
+
+    var innerY = event.clientY - offsetY; // 获取鼠标在方块内的y轴距
+
+    document.onmousemove = function (event) {
+      // container.style.left = event.clientX - innerX + "px";
+      // container.style.top = event.clientY - innerY + "px";
+      var tx = event.clientX - innerX - (option.x || 0);
+      var ty = event.clientY - innerY - (option.y || 0); // 边界判断
+
+      if (parseInt(tx + (option.x || 0)) <= 0) {
+        tx = -(option.x || 0);
+      }
+
+      if (parseInt(ty + (option.y || 0)) <= 0) {
+        ty = -(option.y || 0);
+      }
+
+      if (parseInt(tx + (option.x || 0)) >= window.innerWidth - parseInt(getComputedStyle(container).width)) {
+        tx = window.innerWidth - parseInt(getComputedStyle(container).width) - (option.x || 0);
+      }
+
+      if (parseInt(ty + (option.y || 0)) >= window.innerHeight - parseInt(getComputedStyle(container).height)) {
+        ty = window.innerHeight - parseInt(getComputedStyle(container).height) - (option.y || 0);
+      } // 设置变形
+
+
+      container.style.transform = "translate(".concat(tx, "px,").concat(ty, "px)");
+    }; // 鼠标抬起时，清除绑定在文档上的mousemove和mouseup事件
+    // 否则鼠标抬起后还可以继续拖拽方块
+
+
+    document.onmouseup = function () {
+      document.onmousemove = null;
+      document.onmouseup = null;
+      document.onmouseout = null;
+    };
+  } //
+
 
   function addPanel(panel) {
     container.appendChild(panel.dom);
@@ -42,6 +145,16 @@ var Stats = function Stats() {
   }
 
   showPanel(0);
+
+  if (option.container && _typeof(option.container) === 'object') {
+    option.container.appendChild(container);
+  } else if (option.container && typeof option.container === 'string') {
+    option.container = document.querySelector(option.container);
+    option.container.appendChild(container);
+  } else {
+    document.body.appendChild(container);
+  }
+
   return {
     REVISION: 16,
     dom: container,
@@ -122,8 +235,7 @@ Stats.Panel = function (name, fg, bg) {
       context.fillRect(GRAPH_X + GRAPH_WIDTH - PR, GRAPH_Y, PR, round((1 - value / maxValue) * GRAPH_HEIGHT));
     }
   };
-}; // export { Stats as default };
-
+};
 
 var Stats_1 = Stats;
 
