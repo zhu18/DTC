@@ -7,6 +7,7 @@ const unique = require('./array/unique')
 
 /*-------------commmon----------------*/
 const urlArgs = require('./common/urlArgs')
+const moment = require('./common/moment')
 
 /*-------------object----------------*/
 const eq = require('./object/eq')
@@ -41,6 +42,7 @@ module.exports = {
   unique,
   /*--common--*/
   urlArgs,
+  moment,
   /*--object--*/
   eq,
   isEqual,

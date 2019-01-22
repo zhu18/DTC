@@ -466,6 +466,225 @@ function urlArgs() {
 
 var urlArgs_1 = urlArgs;
 
+var t = 'millisecond',
+    e = 'second',
+    n = 'minute',
+    r = 'hour',
+    s = 'day',
+    i = 'week',
+    a = 'month',
+    u = 'year',
+    c = /^(\d{4})-?(\d{1,2})-?(\d{0,2})(.*?(\d{1,2}):(\d{1,2}):(\d{1,2}))?.?(\d{1,3})?$/,
+    o = /\[.*?\]|y{2,4}|M{1,4}|d{1,2}|w{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g,
+    // h = {
+//     name: "en",
+//     weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
+//     months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_")
+// },
+h = {
+  name: 'zh-cn',
+  weekdays: '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
+  weekdaysShort: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
+  weekdaysMin: '日_一_二_三_四_五_六'.split('_'),
+  months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
+  monthsShort: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+  ordinal: function ordinal(n) {
+    return n + '日';
+  },
+  relativeTime: {
+    future: '%s内',
+    past: '%s前',
+    s: '几秒',
+    m: '1 分钟',
+    mm: '%d 分钟',
+    h: '1 小时',
+    hh: '%d 小时',
+    d: '1 天',
+    dd: '%d 天',
+    M: '1 个月',
+    MM: '%d 个月',
+    y: '1 年',
+    yy: '%d 年'
+  }
+},
+    d = function d(t, e, n) {
+  var r = String(t);
+  return !r || r.length >= e ? t : '' + Array(e + 1 - r.length).join(n) + t;
+},
+    $ = {
+  padStart: d,
+  padZoneStr: function padZoneStr(t) {
+    var e = Math.abs(t),
+        n = Math.floor(e / 60),
+        r = e % 60;
+    return (t <= 0 ? '+' : '-') + d(n, 2, '0') + ':' + d(r, 2, '0');
+  },
+  monthDiff: function monthDiff(t, e) {
+    var n = 12 * (e.year() - t.year()) + (e.month() - t.month()),
+        r = t.clone().add(n, 'months'),
+        s = e - r < 0,
+        i = t.clone().add(n + (s ? -1 : 1), 'months');
+    return Number(-(n + (e - r) / (s ? r - i : i - r)));
+  },
+  absFloor: function absFloor(t) {
+    return t < 0 ? Math.ceil(t) || 0 : Math.floor(t);
+  },
+  prettyUnit: function prettyUnit(c) {
+    return {
+      M: a,
+      y: u,
+      w: i,
+      d: s,
+      h: r,
+      m: n,
+      s: e,
+      ms: t
+    }[c] || String(c || '').toLowerCase().replace(/s$/, '');
+  },
+  isUndefined: function isUndefined(t) {
+    return void 0 === t;
+  }
+},
+    f = 'zh-cn',
+    l = {};
+
+l[f] = h;
+
+var m = function m(t) {
+  return t instanceof D;
+},
+    y = function y(t, e, n) {
+  var r;
+  if (!t) return null;
+  if ("string" == typeof t) l[t] && (r = t), e && (l[t] = e, r = t);else {
+    var s = t.name;
+    l[s] = t, r = s;
+  }
+  return n || (f = r), r;
+},
+    M = function M(t, e) {
+  if (m(t)) return t.clone();
+  var n = e || {};
+  return n.date = t, new D(n);
+},
+    S = function S(t, e) {
+  return M(t, {
+    locale: e.$L
+  });
+},
+    p = $;
+
+p.parseLocale = y, p.isDayjs = m, p.wrapper = S;
+
+var D = function () {
+  function h(t) {
+    this.parse(t);
+  }
+
+  var d = h.prototype;
+  return d.parse = function (t) {
+    var e, n;
+    this.$d = null === (e = t.date) ? new Date(NaN) : p.isUndefined(e) ? new Date() : e instanceof Date ? e : "string" == typeof e && /.*[^Z]$/i.test(e) && (n = e.match(c)) ? new Date(n[1], n[2] - 1, n[3] || 1, n[5] || 0, n[6] || 0, n[7] || 0, n[8] || 0) : new Date(e), this.init(t);
+  }, d.init = function (t) {
+    this.$y = this.$d.getFullYear(), this.$M = this.$d.getMonth(), this.$D = this.$d.getDate(), this.$W = this.$d.getDay(), this.$H = this.$d.getHours(), this.$m = this.$d.getMinutes(), this.$s = this.$d.getSeconds(), this.$ms = this.$d.getMilliseconds(), this.$L = this.$L || y(t.locale, null, !0) || f;
+  }, d.$locale = function () {
+    return l[this.$L];
+  }, d.format = function (t) {
+    console.log(this.$d);
+
+    var e = this,
+        n = t || 'yyyy-MM-ddTHH:mm:ssZ',
+        r = p.padZoneStr(this.$d.getTimezoneOffset()),
+        s = this.$locale(),
+        i = s.weekdays,
+        a = s.months,
+        u = function u(t, e, n, r) {
+      return t && t[e] || n[e].substr(0, r);
+    };
+
+    return n.replace(o, function (t) {
+      if (t.indexOf('[') > -1) return t.replace(/\[|\]/g, '');
+
+      switch (t) {
+        case 'yy':
+          return String(e.$y).slice(-2);
+
+        case 'yyyy':
+          return String(e.$y);
+
+        case 'M':
+          return String(e.$M + 1);
+
+        case 'MM':
+          return p.padStart(e.$M + 1, 2, '0');
+
+        case 'MMM':
+          return u(s.monthsShort, e.$M, a, 3);
+
+        case 'MMMM':
+          return a[e.$M];
+
+        case 'd':
+          return String(e.$D);
+
+        case 'dd':
+          return p.padStart(e.$D, 2, '0');
+
+        case 'w':
+          return String(e.$W);
+
+        case 'ww':
+          return u(s.weekdaysMin, e.$W, i, 2);
+
+        case 'www':
+          return u(s.weekdaysShort, e.$W, i, 3);
+
+        case 'wwww':
+          return i[e.$W];
+
+        case 'H':
+          return String(e.$H);
+
+        case 'HH':
+          return p.padStart(e.$H, 2, '0');
+
+        case 'h':
+        case 'hh':
+          return e.$H === 0 ? 12 : p.padStart(e.$H < 13 ? e.$H : e.$H - 12, t === 'hh' ? 2 : 1, '0');
+
+        case 'a':
+          return e.$H < 12 ? 'am' : 'pm';
+
+        case 'A':
+          return e.$H < 12 ? 'AM' : 'PM';
+
+        case 'm':
+          return String(e.$m);
+
+        case 'mm':
+          return p.padStart(e.$m, 2, '0');
+
+        case 's':
+          return String(e.$s);
+
+        case 'ss':
+          return p.padStart(e.$s, 2, '0');
+
+        case 'SSS':
+          return p.padStart(e.$ms, 3, '0');
+
+        case 'Z':
+          return r;
+
+        default:
+          return r.replace(':', '');
+      }
+    });
+  }, h;
+}();
+
+var moment = M;
+
 /**
  * Performs a
  * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
@@ -2298,10 +2517,10 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
   cloneableTags[errorTag] = cloneableTags[funcTag] = cloneableTags[weakMapTag] = false;
   /** Detect free variable `global` from Node.js. */
 
-  var freeGlobal = _typeof(commonjsGlobal) == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+  var freeGlobal = _typeof(commonjsGlobal) === 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
   /** Detect free variable `self`. */
 
-  var freeSelf = (typeof self === "undefined" ? "undefined" : _typeof(self)) == 'object' && self && self.Object === Object && self;
+  var freeSelf = (typeof self === "undefined" ? "undefined" : _typeof(self)) === 'object' && self && self.Object === Object && self;
   /** Used as a reference to the global object. */
 
   var root = freeGlobal || freeSelf || Function('return this')();
@@ -2310,7 +2529,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
   var freeExports = exports && !exports.nodeType && exports;
   /** Detect free variable `module`. */
 
-  var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+  var freeModule = freeExports && 'object' === 'object' && module && !module.nodeType && module;
   /** Detect the popular CommonJS extension `module.exports`. */
 
   var moduleExports = freeModule && freeModule.exports === freeExports;
@@ -2463,7 +2682,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
     // despite having improperly defined `toString` methods.
     var result = false;
 
-    if (value != null && typeof value.toString != 'function') {
+    if (value != null && typeof value.toString !== 'function') {
       try {
         result = !!(value + '');
       } catch (e) {}
@@ -3463,7 +3682,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
 
   function getMapData(map, key) {
     var data = map.__data__;
-    return isKeyable(key) ? data[typeof key == 'string' ? 'string' : 'hash'] : data.map;
+    return isKeyable(key) ? data[typeof key === 'string' ? 'string' : 'hash'] : data.map;
   }
   /**
    * Gets the native function at `key` of `object`.
@@ -3541,7 +3760,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
     var length = array.length,
         result = array.constructor(length); // Add properties assigned by `RegExp#exec`.
 
-    if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
+    if (length && typeof array[0] === 'string' && hasOwnProperty.call(array, 'index')) {
       result.index = array.index;
       result.input = array.input;
     }
@@ -3558,7 +3777,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
 
 
   function initCloneObject(object) {
-    return typeof object.constructor == 'function' && !isPrototype(object) ? baseCreate(getPrototype(object)) : {};
+    return typeof object.constructor === 'function' && !isPrototype(object) ? baseCreate(getPrototype(object)) : {};
   }
   /**
    * Initializes an object clone based on its `toStringTag`.
@@ -3629,7 +3848,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
 
   function isIndex(value, length) {
     length = length == null ? MAX_SAFE_INTEGER : length;
-    return !!length && (typeof value == 'number' || reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
+    return !!length && (typeof value === 'number' || reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
   }
   /**
    * Checks if `value` is suitable for use as unique object key.
@@ -3668,7 +3887,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
 
   function isPrototype(value) {
     var Ctor = value && value.constructor,
-        proto = typeof Ctor == 'function' && Ctor.prototype || objectProto;
+        proto = typeof Ctor === 'function' && Ctor.prototype || objectProto;
     return value === proto;
   }
   /**
@@ -3935,7 +4154,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
 
 
   function isLength(value) {
-    return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+    return typeof value === 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
   }
   /**
    * Checks if `value` is the
@@ -3996,7 +4215,7 @@ var cloneDeep_1 = createCommonjsModule(function (module, exports) {
 
 
   function isObjectLike(value) {
-    return !!value && _typeof(value) == 'object';
+    return !!value && _typeof(value) === 'object';
   }
   /**
    * Creates an array of the own enumerable property names of `object`.
@@ -4855,6 +5074,7 @@ var util = {
 
   /*--common--*/
   urlArgs: urlArgs_1,
+  moment: moment,
 
   /*--object--*/
   eq: eq_1,
@@ -4887,22 +5107,24 @@ var util_3 = util.max;
 var util_4 = util.min;
 var util_5 = util.unique;
 var util_6 = util.urlArgs;
-var util_7 = util.eq;
-var util_8 = util.isEqual;
-var util_9 = util.cloneDeep;
-var util_10 = util.merge;
-var util_11 = util.cookieDel;
-var util_12 = util.cookieGet;
-var util_13 = util.cookieSet;
-var util_14 = util.excerpt;
-var util_15 = util.trim;
-var util_16 = util.uId;
-var util_17 = util.isArray;
-var util_18 = util.isEmptyObject;
-var util_19 = util.isFunction;
-var util_20 = util.isNull;
-var util_21 = util.isNumber;
-var util_22 = util.isObject;
+var util_7 = util.moment;
+var util_8 = util.eq;
+var util_9 = util.isEqual;
+var util_10 = util.cloneDeep;
+var util_11 = util.merge;
+var util_12 = util.merge2;
+var util_13 = util.cookieDel;
+var util_14 = util.cookieGet;
+var util_15 = util.cookieSet;
+var util_16 = util.excerpt;
+var util_17 = util.trim;
+var util_18 = util.uId;
+var util_19 = util.isArray;
+var util_20 = util.isEmptyObject;
+var util_21 = util.isFunction;
+var util_22 = util.isNull;
+var util_23 = util.isNumber;
+var util_24 = util.isObject;
 
 export default util;
-export { util_1 as concat, util_2 as shuffle, util_3 as max, util_4 as min, util_5 as unique, util_6 as urlArgs, util_7 as eq, util_8 as isEqual, util_9 as cloneDeep, util_10 as merge, util_11 as cookieDel, util_12 as cookieGet, util_13 as cookieSet, util_14 as excerpt, util_15 as trim, util_16 as uId, util_17 as isArray, util_18 as isEmptyObject, util_19 as isFunction, util_20 as isNull, util_21 as isNumber, util_22 as isObject };
+export { util_1 as arrayConcat, util_2 as arrShuffle, util_3 as max, util_4 as min, util_5 as unique, util_6 as urlArgs, util_7 as moment, util_8 as eq, util_9 as isEqual, util_10 as cloneDeep, util_11 as merge, util_12 as merge2, util_13 as cookieDel, util_14 as cookieGet, util_15 as cookieSet, util_16 as excerpt, util_17 as trim, util_18 as uId, util_19 as isArray, util_20 as isEmptyObject, util_21 as isFunction, util_22 as isNull, util_23 as isNumber, util_24 as isObject };
