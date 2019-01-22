@@ -2,13 +2,13 @@
  * 打乱一个数组，让其中的值随机组成新数组。
  * @memberof  util
  * @param { Array } arr 数组
- * @returns {Array} 
+ * @returns {Array}
  * @author 魏彬  <weibin@jusfoun.com>
  * @example
- *   dtc.util.arrShuffle([1,2,3,4,5,6]) //[3, 4, 6, 2, 5, 1]
+ *   dtc.util.shuffle([1,2,3,4,5,6]) //[3, 4, 6, 2, 5, 1]
  */
 
-function arrShuffle(arr) {
+function shuffle(arr) {
   let _arr = arr.slice(0) //存一个副本 不能直接改变原数组
   for (var i = 0; i < _arr.length; i++) {
     let j = getRandomInt(0, i);
@@ -25,4 +25,4 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-module.exports = arrShuffle
+module.exports = shuffle

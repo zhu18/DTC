@@ -3,7 +3,7 @@ const expect = require('chai').expect
 const util = require('../dist/dtc.util.umd')
 
 describe('Object', function () {
-  describe('merge2', function () {
+  describe('merge', function () {
     const obj1 = {
         name: 'zhangsan',
         list: [12, 22, 34, 55]
@@ -16,7 +16,7 @@ describe('Object', function () {
         }
       }
     it('should merger two Object', function () {
-      expect(util.merge2({}, obj1, obj2)).to.have.all.keys('name', 'list', 'age', 'family')
+      expect(util.merge({}, obj1, obj2)).to.have.all.keys('name', 'list', 'age', 'family')
     })
   })
 })

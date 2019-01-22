@@ -1,6 +1,6 @@
 /*-------------array----------------*/
-const arrayConcat = require('./array/arrayConcat')
-const arrShuffle = require('./array/arrShuffle')
+const concat = require('./array/concat')
+const shuffle = require('./array/shuffle')
 const max = require('./array/max')
 const min = require('./array/min')
 const unique = require('./array/unique')
@@ -13,7 +13,6 @@ const eq = require('./object/eq')
 const isEqual = require('./object/isEqual')
 const cloneDeep = require('./object/cloneDeep')
 const merge = require('./object/merge')
-const merge2 = require('./object/merge2')
 
 /*-------------storage----------------*/
 const cookieDel = require('./storage/cookieDel')
@@ -35,8 +34,8 @@ const isNumber = require('./typeCheck/isNumber')
 const isObject = require('./typeCheck/isObject')
 module.exports = {
   /*--array--*/
-  arrayConcat,
-  arrShuffle,
+  concat,
+  shuffle,
   max,
   min,
   unique,
@@ -47,7 +46,6 @@ module.exports = {
   isEqual,
   cloneDeep,
   merge,
-  merge2,
   /*--storage--*/
   cookieDel,
   cookieGet,
