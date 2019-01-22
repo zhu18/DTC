@@ -7310,18 +7310,7 @@
 	    key: "renderScene",
 	    value: function renderScene() {
 	      this.renderer.clear();
-	      requestAnimationFrame(this.renderScene.bind(this)); // this.pos=this.pos||0;
-	      // let light = this.scene.getObjectByName('pointLight');
-	      // let p = this.scene.getObjectByName('point');
-	      // if(this.pos < 1){
-	      //   let v3=this.curve.getPointAt(this.pos);
-	      //   light.position.set(v3.x,v3.y,v3.z);
-	      //   p.position.set(v3.x,v3.y,v3.z);
-	      //     this.pos += 0.001
-	      // }else{
-	      //   this.pos = 0;
-	      // }
-
+	      requestAnimationFrame(this.renderScene.bind(this));
 	      this.areaGroup.children.map(function (area) {
 	        if (area) area.update();
 	      });
