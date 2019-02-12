@@ -6,6 +6,9 @@ const min = require('./array/min')
 const unique = require('./array/unique')
 
 /*-------------commmon----------------*/
+const Browser = require('./browser/browser')
+
+/*-------------commmon----------------*/
 const urlArgs = require('./common/urlArgs')
 const moment = require('./common/moment')
 
@@ -22,8 +25,9 @@ const cookieSet = require('./storage/cookieSet')
 
 /*-------------string----------------*/
 const excerpt = require('./string/excerpt')
-const trim =  require('./string/trim')
+const trim = require('./string/trim')
 const uId = require('./string/uId')
+const toRawType = require('./string/toRawType')
 
 /*-------------typeCheck----------------*/
 const isArray = require('./typeCheck/isArray')
@@ -33,6 +37,8 @@ const isNaN = require('./typeCheck/isNaN')
 const isNull = require('./typeCheck/isNull')
 const isNumber = require('./typeCheck/isNumber')
 const isObject = require('./typeCheck/isObject')
+const isPlainObject = require('./typeCheck/isPlainObject')
+
 module.exports = {
   /*--array--*/
   concat,
@@ -40,6 +46,8 @@ module.exports = {
   max,
   min,
   unique,
+  /*--common--*/
+  Browser,
   /*--common--*/
   urlArgs,
   moment,
@@ -56,6 +64,7 @@ module.exports = {
   excerpt,
   trim,
   uId,
+  toRawType,
   /*--typeCheck--*/
   isArray,
   isEmptyObject,
@@ -63,5 +72,6 @@ module.exports = {
   isNaN,
   isNull,
   isNumber,
-  isObject
+  isObject,
+  isPlainObject
 }
