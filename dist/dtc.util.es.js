@@ -831,7 +831,7 @@ function Browser() {
     _this.engine = 'Blink';
   }
 
-  this.isIEVersion = function (requirement) {
+  this.isVersion = function (requirement) {
     var req = requirement.toLowerCase();
     var v = parseInt(this.version);
     var regV = /\d+/g;
@@ -5019,6 +5019,67 @@ function uId() {
 
 var uId_1 = uId;
 
+var _toString = Object.prototype.toString;
+var _toString_1 = _toString;
+
+/**
+ * 监测数据类型只保留基本的数据类型字段
+ * @param {any} value 需要监测的数据类型
+ */
+
+function toRawType(value) {
+  return _toString_1.call(value).slice(8, -1);
+}
+
+var toRawType_1 = toRawType;
+
+/**
+ * RgbToHex
+ * @param {string} input
+ * @returns {string} hex value
+ */
+function rgbToHex(input) {
+  var alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var reg = /([\d]{1,3})\,([\d]{1,3})\,([\d]{1,3})\,?((0\.[\d])|(\.[\d])|(0|1))?/,
+      color = reg.exec(input);
+
+  if (color) {
+    var colorArr = color[0].split(',');
+    var colorStr = colorArr.map(function (c, i) {
+      if (i > 2 && c) {
+        if (alpha === true) {
+          return (parseFloat(c.trim()) * 256).toString(16).slice(0, 2);
+        }
+      }
+
+      return (c.trim() - 0).toString(16);
+    });
+    return '#' + colorStr.join('');
+  }
+}
+
+var rgbToHex_1 = rgbToHex;
+
+/**
+ * HexToRgb
+ *
+ * @param {string} input
+ */
+function hexToRgb(input) {
+  var output = [];
+  input = input.replace(/^[#]?(?:([0-9a-f]{6})|([0-9a-f]{3}))$/i, function (match, group1, group2) {
+    return group1 ? group1 : group2.replace(/([0-9a-f])/ig, '$1$1');
+  });
+
+  for (var i = 0; i < 3; i++) {
+    output.push(parseInt(input.slice(i * 2, i * 2 + 2), 16));
+  }
+
+  return output.join(',');
+}
+
+var hexToRgb_1 = hexToRgb;
+
 /**
  * Checks if `value` is classified as an `Array` object.
  *
@@ -5491,6 +5552,17 @@ function isObject$1(value) {
 
 var isObject_1 = isObject$1;
 
+/**
+ * Strict object type check. Only returns true
+ * for plain JavaScript objects.
+ */
+
+function isPlainObject(obj) {
+  return _toString_1.call(obj) === '[object Object]';
+}
+
+var isPlainObject_1 = isPlainObject;
+
 /*-------------array----------------*/
 
 /*-------------commmon----------------*/
@@ -5535,6 +5607,9 @@ var util = {
   excerpt: excerpt_1,
   trim: trim_1,
   uId: uId_1,
+  toRawType: toRawType_1,
+  rgbToHex: rgbToHex_1,
+  hexTorgb: hexToRgb_1,
 
   /*--typeCheck--*/
   isArray: isArray_1,
@@ -5543,7 +5618,8 @@ var util = {
   isNaN: _isNaN,
   isNull: isNull_1,
   isNumber: isNumber_1,
-  isObject: isObject_1
+  isObject: isObject_1,
+  isPlainObject: isPlainObject_1
 };
 var util_1 = util.concat;
 var util_2 = util.shuffle;
@@ -5563,12 +5639,16 @@ var util_15 = util.cookieSet;
 var util_16 = util.excerpt;
 var util_17 = util.trim;
 var util_18 = util.uId;
-var util_19 = util.isArray;
-var util_20 = util.isEmptyObject;
-var util_21 = util.isFunction;
-var util_22 = util.isNull;
-var util_23 = util.isNumber;
-var util_24 = util.isObject;
+var util_19 = util.toRawType;
+var util_20 = util.rgbToHex;
+var util_21 = util.hexTorgb;
+var util_22 = util.isArray;
+var util_23 = util.isEmptyObject;
+var util_24 = util.isFunction;
+var util_25 = util.isNull;
+var util_26 = util.isNumber;
+var util_27 = util.isObject;
+var util_28 = util.isPlainObject;
 
 export default util;
-export { util_1 as concat, util_2 as shuffle, util_3 as max, util_4 as min, util_5 as unique, util_6 as Browser, util_7 as urlArgs, util_8 as moment, util_9 as eq, util_10 as isEqual, util_11 as cloneDeep, util_12 as merge, util_13 as cookieDel, util_14 as cookieGet, util_15 as cookieSet, util_16 as excerpt, util_17 as trim, util_18 as uId, util_19 as isArray, util_20 as isEmptyObject, util_21 as isFunction, util_22 as isNull, util_23 as isNumber, util_24 as isObject };
+export { util_1 as concat, util_2 as shuffle, util_3 as max, util_4 as min, util_5 as unique, util_6 as Browser, util_7 as urlArgs, util_8 as moment, util_9 as eq, util_10 as isEqual, util_11 as cloneDeep, util_12 as merge, util_13 as cookieDel, util_14 as cookieGet, util_15 as cookieSet, util_16 as excerpt, util_17 as trim, util_18 as uId, util_19 as toRawType, util_20 as rgbToHex, util_21 as hexTorgb, util_22 as isArray, util_23 as isEmptyObject, util_24 as isFunction, util_25 as isNull, util_26 as isNumber, util_27 as isObject, util_28 as isPlainObject };

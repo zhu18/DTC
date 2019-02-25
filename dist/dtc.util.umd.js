@@ -5040,6 +5040,56 @@
     var toRawType_1 = toRawType;
 
     /**
+     * RgbToHex
+     * @param {string} input
+     * @returns {string} hex value
+     */
+    function rgbToHex(input) {
+      var alpha = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      var reg = /([\d]{1,3})\,\s*([\d]{1,3})\,\s*([\d]{1,3})\,?\s*((0\.[\d])|(\.[\d])|(0|1))?/,
+          color = reg.exec(input);
+
+      if (color) {
+        var colorArr = color[0].split(',');
+        var colorStr = colorArr.map(function (c, i) {
+          if (i > 2 && c) {
+            if (alpha === true) {
+              return (parseFloat(c.trim()) * 256).toString(16).slice(0, 2);
+            } else {
+              return '';
+            }
+          }
+
+          var hex = (c.trim() - 0).toString(16);
+          return hex.length < 2 ? '0' + hex : hex;
+        });
+        return '#' + colorStr.join('');
+      }
+    }
+
+    var rgbToHex_1 = rgbToHex;
+
+    /**
+     * HexToRgb
+     *
+     * @param {string} input
+     */
+    function hexToRgb(input) {
+      var output = [];
+      input = input.replace(/^[#]?(?:([0-9a-f]{6})|([0-9a-f]{3}))$/i, function (match, group1, group2) {
+        return group1 ? group1 : group2.replace(/([0-9a-f])/ig, '$1$1');
+      });
+
+      for (var i = 0; i < 3; i++) {
+        output.push(parseInt(input.slice(i * 2, i * 2 + 2), 16));
+      }
+
+      return output.join(',');
+    }
+
+    var hexToRgb_1 = hexToRgb;
+
+    /**
      * Checks if `value` is classified as an `Array` object.
      *
      * @static
@@ -5567,6 +5617,8 @@
       trim: trim_1,
       uId: uId_1,
       toRawType: toRawType_1,
+      rgbToHex: rgbToHex_1,
+      hexToRgb: hexToRgb_1,
 
       /*--typeCheck--*/
       isArray: isArray_1,
@@ -5597,13 +5649,15 @@
     var util_17 = util.trim;
     var util_18 = util.uId;
     var util_19 = util.toRawType;
-    var util_20 = util.isArray;
-    var util_21 = util.isEmptyObject;
-    var util_22 = util.isFunction;
-    var util_23 = util.isNull;
-    var util_24 = util.isNumber;
-    var util_25 = util.isObject;
-    var util_26 = util.isPlainObject;
+    var util_20 = util.rgbToHex;
+    var util_21 = util.hexToRgb;
+    var util_22 = util.isArray;
+    var util_23 = util.isEmptyObject;
+    var util_24 = util.isFunction;
+    var util_25 = util.isNull;
+    var util_26 = util.isNumber;
+    var util_27 = util.isObject;
+    var util_28 = util.isPlainObject;
 
     exports.default = util;
     exports.concat = util_1;
@@ -5625,13 +5679,15 @@
     exports.trim = util_17;
     exports.uId = util_18;
     exports.toRawType = util_19;
-    exports.isArray = util_20;
-    exports.isEmptyObject = util_21;
-    exports.isFunction = util_22;
-    exports.isNull = util_23;
-    exports.isNumber = util_24;
-    exports.isObject = util_25;
-    exports.isPlainObject = util_26;
+    exports.rgbToHex = util_20;
+    exports.hexToRgb = util_21;
+    exports.isArray = util_22;
+    exports.isEmptyObject = util_23;
+    exports.isFunction = util_24;
+    exports.isNull = util_25;
+    exports.isNumber = util_26;
+    exports.isObject = util_27;
+    exports.isPlainObject = util_28;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 

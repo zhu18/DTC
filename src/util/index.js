@@ -28,6 +28,8 @@ const excerpt = require('./string/excerpt')
 const trim = require('./string/trim')
 const uId = require('./string/uId')
 const toRawType = require('./string/toRawType')
+const rgbToHex = require('./string/rgbToHex')
+const hexToRgb = require('./string/hexToRgb')
 
 /*-------------typeCheck----------------*/
 const isArray = require('./typeCheck/isArray')
@@ -65,6 +67,8 @@ module.exports = {
   trim,
   uId,
   toRawType,
+  rgbToHex,
+  hexToRgb,
   /*--typeCheck--*/
   isArray,
   isEmptyObject,
