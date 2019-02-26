@@ -20,6 +20,8 @@ function rgbToHex(input, alpha = true) {
       return hex.length < 2 ? '0' + hex : hex
     })
     return '#' + colorStr.join('')
+  } else {
+    return null
   }
 }
 

@@ -102,11 +102,26 @@ describe('String', function () {
     it('Should return #141e28', function () {
       expect(util.rgbToHex(rgb4)).to.be.equal('#141e28')
     })
+    it('Should return null', function () {
+      expect(util.rgbToHex('43,44')).to.be.equal(null)
+    })
   })
   // hexToRgb
   describe('hexToRgb', function () {
     it('Should return "20,30,40"', function () {
       expect(util.hexToRgb('#141e28')).to.be.equal('20,30,40')
+    })
+    it('Should return "20,30,40"', function () {
+      expect(util.hexToRgb('141e28')).to.be.equal('20,30,40')
+    })
+    it('Should return "255,255,255"', function () {
+      expect(util.hexToRgb('fff')).to.be.equal('255,255,255')
+    })
+    it('Should return null', function () {
+      expect(util.hexToRgb('ff')).to.be.equal(null)
+    })
+    it('Should return null', function () {
+      expect(util.hexToRgb('fffffff')).to.be.equal(null)
     })
   })
 })

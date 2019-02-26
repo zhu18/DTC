@@ -5064,6 +5064,8 @@
           return hex.length < 2 ? '0' + hex : hex;
         });
         return '#' + colorStr.join('');
+      } else {
+        return null;
       }
     }
 
@@ -5080,11 +5082,15 @@
         return group1 ? group1 : group2.replace(/([0-9a-f])/ig, '$1$1');
       });
 
-      for (var i = 0; i < 3; i++) {
-        output.push(parseInt(input.slice(i * 2, i * 2 + 2), 16));
-      }
+      if (input.length === 6) {
+        for (var i = 0; i < 3; i++) {
+          output.push(parseInt(input.slice(i * 2, i * 2 + 2), 16));
+        }
 
-      return output.join(',');
+        return output.join(',');
+      } else {
+        return null;
+      }
     }
 
     var hexToRgb_1 = hexToRgb;
