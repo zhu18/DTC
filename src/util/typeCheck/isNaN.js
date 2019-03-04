@@ -114,4 +114,4 @@ function isNumber(value) {
     (isObjectLike(value) && objectToString.call(value) == numberTag);
 }
 
-module.exports = isNaN;
+export default isNaN;

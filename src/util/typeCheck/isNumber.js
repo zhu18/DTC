@@ -79,4 +79,4 @@ function isNumber(value) {
     (isObjectLike(value) && objectToString.call(value) == numberTag);
 }
 
-module.exports = isNumber;
+export default isNumber;

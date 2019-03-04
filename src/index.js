@@ -1,9 +1,9 @@
-const util = require('./util/index')
-const vis = require('./vis/index')
-const dev = require('./dev/index')
+import util from './util/index'
+import vis from './vis/index'
+import dev from './dev/index'
 
-module.exports = {
-    util,
-    vis,
-    dev
+export {
+  util,
+  vis,
+  dev
 }

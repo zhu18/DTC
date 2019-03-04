@@ -255,4 +255,5 @@ Stats.Panel = function (name, fg, bg) {
 
 };
 
-module.exports = Stats
+// module.exports = Stats
+export default Stats

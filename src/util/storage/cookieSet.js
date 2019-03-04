@@ -6,7 +6,7 @@
  * @param {Number} days 过期时间（天数）
  * @author 褚甜甜  <ctt@jusfoun.com>
  * @example
- *   dtc.util.cookieSet('cookieName','value',expires) 
+ *   dtc.util.cookieSet('cookieName','value',expires)
  */
 
 function cookieSet(name, value, days) {
@@ -19,4 +19,4 @@ function cookieSet(name, value, days) {
     document.cookie = name + "=" + value + expires + "; path=/";
 }
 
-module.exports = cookieSet
+export default cookieSet

@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const util = require('../dist/dtc.util.umd')
+const util = require('../dist/dtc.util.umd').default
 
 describe('TypeChekc', function() {
   describe('isPlainObject', function() {

@@ -3,7 +3,7 @@
  * @author supereggbert / http://www.paulbrunt.co.uk/
  * @author julianwa / https://github.com/julianwa
  */
-import * as THREE from './three.js'
+import * as THREE from 'three'
 THREE.RenderableObject = function () {
 
   this.id = 0;

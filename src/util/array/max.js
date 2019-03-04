@@ -156,4 +156,4 @@ function max(array) {
     : undefined;
 }
 
-module.exports = max;
+export default max;

@@ -38,4 +38,4 @@ function trim3(str, place) {
   }
   return str
 }
-module.exports = trim
+export default trim

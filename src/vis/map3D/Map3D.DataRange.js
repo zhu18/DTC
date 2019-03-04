@@ -6,8 +6,7 @@
  * @module Map3D
  */
 
-// import * as THREE from './three.js'
-import THREE from './main'
+import * as THREE from 'three'
 import TWEEN from './tween.min.js'
 import * as $ from './util'
 

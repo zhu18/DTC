@@ -18,4 +18,4 @@ function hexToRgb(input) {
   }
 }
 
-module.exports = hexToRgb
+export default hexToRgb

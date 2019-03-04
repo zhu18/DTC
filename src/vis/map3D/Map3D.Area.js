@@ -6,12 +6,10 @@
  * @module Map3D
  */
 
-// import * as THREE from './three.js'
-import THREE from './main'
+import * as THREE from 'three'
+
 import TWEEN from './tween.min.js'
 import * as $ from './util'
-// import Shaderlib from './three.ShaderLibExp'
-
 
 /**
  * 地图区域,继承{@link https://threejs.org/docs/#api/core/Object3D|THREE.Object3D}

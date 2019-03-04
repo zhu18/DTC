@@ -6,11 +6,10 @@
  * @module Map3D
  */
 
-// import * as THREE from './three.js'
-import THREE from './main'
-import TWEEN from './tween.min.js'
+import * as THREE from 'three'
+import ShaderLib from './three.ShaderLibExp'
+
 import * as $ from './util'
-// import Shaderlib from './three.ShaderLibExp'
 
 /** Class representing a Line.
  * @extends THREE.Line

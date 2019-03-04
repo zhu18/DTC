@@ -23,4 +23,4 @@
  */
 var isArray = Array.isArray;
 
-module.exports = isArray;
+export default isArray;

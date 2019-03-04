@@ -1,3 +1,3 @@
 const _toString = Object.prototype.toString
 
-module.exports = _toString
+export default _toString

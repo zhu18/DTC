@@ -3,8 +3,9 @@
  * 星系运动
  */
 import Detector from './Detector.js'
-// import * as THREE from './three.js'
-import THREE from './main'
+import * as THREE from 'three'
+
+// import THREE from './main'
 import TWEEN from './tween.min.js'
 // import './OrbitControls.js'
 import Stats from './stats.js'
@@ -128,7 +129,7 @@ class Galaxy{
         renderer.setSize( window.innerWidth, window.innerHeight );
         camera.position.set(30,300,1500);
         camera.lookAt(scene.position);
-        controls  = new THREE.OrbitControls(camera,renderer.domElement);
+        controls  = new OrbitControls(camera,renderer.domElement);
         controls.userPan=false;
         controls.autoRotate=false;
 

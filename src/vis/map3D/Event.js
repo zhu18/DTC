@@ -2,7 +2,7 @@
  * Created by jusfoun-fe.github.io on 2017/11/12.
  * three event
  */
-import * as THREE from './three.js'
+import * as THREE from 'three'
 
 /*
 * 参数格式

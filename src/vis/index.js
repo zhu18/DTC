@@ -1,5 +1,5 @@
-const Map3D = require('./map3D/Map3D')
+import Map3D from './map3D/Map3D'
 
-module.exports = {
+export default {
   Map3D
 }

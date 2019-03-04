@@ -24,4 +24,4 @@ function urlArgs() {
   return args;
 }
 
-module.exports = urlArgs
+export default urlArgs

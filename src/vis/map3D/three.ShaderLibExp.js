@@ -6,7 +6,7 @@
  * @author mikael emtinger / http://gomo.se/
  */
 
-import * as THREE from './three.js'
+import * as THREE from 'three'
 
 /**
  * 线条着色器,color,texure需要指定，流动效果请参考update实现

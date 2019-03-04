@@ -1,5 +1,5 @@
-const Stats = require('./debug/Stats')
+import Stats from './debug/Stats'
 
-module.exports = {
+export default {
   Stats
 }

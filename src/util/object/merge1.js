@@ -2298,4 +2298,4 @@ function stubFalse() {
   return false;
 }
 
-module.exports = merge;
+export default merge;

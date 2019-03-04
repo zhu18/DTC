@@ -152,4 +152,4 @@ function isObject(value) {
   return value != null && (type == 'object' || type == 'function');
 }
 
-module.exports = isFunction;
+export default isFunction;

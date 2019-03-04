@@ -173,4 +173,4 @@ var D = (function () {
     }, h
 }());
 
-module.exports = M
+export default M

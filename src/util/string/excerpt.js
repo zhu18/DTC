@@ -14,4 +14,4 @@ function excerpt(str, nwords) {
   return words.join('') + (words.length !== str.split('').length ? '…' : '');
 }
 
-module.exports = excerpt
+export default excerpt

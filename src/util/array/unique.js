@@ -19,4 +19,4 @@ function unique(arr) {
     return n;
 }
 
-module.exports = unique
+export default unique

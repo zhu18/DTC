@@ -4,7 +4,7 @@
  * @param { String } name cookie名称
  * @author 褚甜甜  <ctt@jusfoun.com>
  * @example
- *   dtc.util.cookieGet('cookieName') 
+ *   dtc.util.cookieGet('cookieName')
  */
 
 function cookieGet(name) {
@@ -20,4 +20,4 @@ function cookieGet(name) {
     return null;
 }
 
-module.exports = cookieGet
+export default cookieGet

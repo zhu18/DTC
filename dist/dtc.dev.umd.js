@@ -241,17 +241,13 @@
         context.fillRect(GRAPH_X + GRAPH_WIDTH - PR, GRAPH_Y, PR, round((1 - value / maxValue) * GRAPH_HEIGHT));
       }
     };
+  }; // module.exports = Stats
+
+  var index = {
+    Stats: Stats
   };
 
-  var Stats_1 = Stats;
-
-  var dev = {
-    Stats: Stats_1
-  };
-  var dev_1 = dev.Stats;
-
-  exports.default = dev;
-  exports.Stats = dev_1;
+  exports.default = index;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

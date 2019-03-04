@@ -25,4 +25,4 @@ function rgbToHex(input, alpha = true) {
   }
 }
 
-module.exports = rgbToHex
+export default rgbToHex

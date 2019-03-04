@@ -393,4 +393,4 @@ function Browser() {
   return _this
 }
 
-module.exports = Browser
+export default Browser

@@ -1,47 +1,47 @@
 /*-------------array----------------*/
-const concat = require('./array/concat')
-const shuffle = require('./array/shuffle')
-const max = require('./array/max')
-const min = require('./array/min')
-const unique = require('./array/unique')
+import concat from './array/concat'
+import shuffle from './array/shuffle'
+import max from './array/max'
+import min from './array/min'
+import unique from './array/unique'
 
 /*-------------commmon----------------*/
-const Browser = require('./browser/browser')
+import Browser from './browser/browser'
 
 /*-------------commmon----------------*/
-const urlArgs = require('./common/urlArgs')
-const moment = require('./common/moment')
+import urlArgs from './common/urlArgs'
+import moment from './common/moment'
 
 /*-------------object----------------*/
-const eq = require('./object/eq')
-const isEqual = require('./object/isEqual')
-const cloneDeep = require('./object/cloneDeep')
-const merge = require('./object/merge')
+import eq from './object/eq'
+import isEqual from './object/isEqual'
+import cloneDeep from './object/cloneDeep'
+import merge from './object/merge'
 
 /*-------------storage----------------*/
-const cookieDel = require('./storage/cookieDel')
-const cookieGet = require('./storage/cookieGet')
-const cookieSet = require('./storage/cookieSet')
+import cookieDel from './storage/cookieDel'
+import cookieGet from './storage/cookieGet'
+import cookieSet from './storage/cookieSet'
 
 /*-------------string----------------*/
-const excerpt = require('./string/excerpt')
-const trim = require('./string/trim')
-const uId = require('./string/uId')
-const toRawType = require('./string/toRawType')
-const rgbToHex = require('./string/rgbToHex')
-const hexToRgb = require('./string/hexToRgb')
+import excerpt from './string/excerpt'
+import trim from './string/trim'
+import uId from './string/uId'
+import toRawType from './string/toRawType'
+import rgbToHex from './string/rgbToHex'
+import hexToRgb from './string/hexToRgb'
 
 /*-------------typeCheck----------------*/
-const isArray = require('./typeCheck/isArray')
-const isEmptyObject = require('./typeCheck/isEmptyObject')
-const isFunction = require('./typeCheck/isFunction')
-const isNaN = require('./typeCheck/isNaN')
-const isNull = require('./typeCheck/isNull')
-const isNumber = require('./typeCheck/isNumber')
-const isObject = require('./typeCheck/isObject')
-const isPlainObject = require('./typeCheck/isPlainObject')
+import isArray from './typeCheck/isArray'
+import isEmptyObject from './typeCheck/isEmptyObject'
+import isFunction from './typeCheck/isFunction'
+import isNaN from './typeCheck/isNaN'
+import isNull from './typeCheck/isNull'
+import isNumber from './typeCheck/isNumber'
+import isObject from './typeCheck/isObject'
+import isPlainObject from './typeCheck/isPlainObject'
 
-module.exports = {
+export default {
   /*--array--*/
   concat,
   shuffle,

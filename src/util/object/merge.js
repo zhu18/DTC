@@ -8,7 +8,7 @@
  */
 
   /**
-   * Merge one or more objects 
+   * Merge one or more objects
    * @param bool? clone
    * @param mixed,... arguments
    * @return object
@@ -22,7 +22,7 @@
     publicName = 'merge';
 
   /**
-   * Merge two or more objects recursively 
+   * Merge two or more objects recursively
    * @param bool? clone
    * @param mixed,... arguments
    * @return object
@@ -162,6 +162,5 @@
   }
 
 
-    module.exports = Public;
+    export default Public;
 
- 

@@ -1745,4 +1745,4 @@ function stubFalse () {
   return false
 }
 
-module.exports = cloneDeep
+export default cloneDeep

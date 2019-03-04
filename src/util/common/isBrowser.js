@@ -33,4 +33,4 @@ function isBrowser() {
   }
 }
 
-module.exports = isBrowser
+export default isBrowser

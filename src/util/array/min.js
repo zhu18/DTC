@@ -156,4 +156,4 @@ function min(array) {
     : undefined;
 }
 
-module.exports = min;
+export default min;

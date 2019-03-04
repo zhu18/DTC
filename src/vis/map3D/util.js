@@ -1,7 +1,7 @@
 /**
  * Created by ADMIN on 2017/12/18.
  */
-import * as THREE from './three.js'
+import * as THREE from 'three'
 import TWEEN from './tween.min.js'
 
 //颜色格式化 '#999999','rgb','hsl',0x999999

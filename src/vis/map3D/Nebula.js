@@ -4,8 +4,9 @@
  */
 
 import Detector from './Detector.js'
-// import * as THREE from './three.js'
-import THREE from './main'
+import * as THREE from 'three'
+import OrbitControls from './OrbitControls'
+
 import TWEEN from './tween.min.js'
 // import './OrbitControls.js'
 
@@ -84,7 +85,7 @@ function Nebula(o){
     renderer.domElement.style.top='0';
     opt.el.appendChild(renderer.domElement);
 
-    controls  = new THREE.OrbitControls(camera,renderer.domElement);
+    controls  = new OrbitControls(camera,renderer.domElement);
     controls.userPan=false;
     controls.autoRotate=false;
 

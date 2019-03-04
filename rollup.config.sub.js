@@ -41,6 +41,7 @@ fs.readdir('./src/', function (err, files) {
             clearLine: false
           })
         ],
+        external: ['three']
       });
       await fileList[i].write({
         file: `./dist/dtc.${v}.${params.format || 'es'}.js`,
@@ -71,6 +72,7 @@ fs.readdir('./src/', function (err, files) {
             clearLine: false
           })
         ],
+        external: ['three']
       });
       await fileListMinfy[i].write({
         file: `./dist/dtc.${v}.${params.format || 'es'}.min.js`,

@@ -1,7 +1,7 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
-import * as THREE from './three.js'
+import * as THREE from 'three'
 THREE.SpriteCanvasMaterial = function ( parameters ) {
 
   THREE.Material.call( this );

@@ -1,8 +1,9 @@
 /**
  * Created by ADMIN on 2017/12/18.
  */
-// import * as THREE from './three.js'
-import THREE from './main'
+import * as THREE from 'three'
+
+// import THREE from './main'
 import './util.js'
 
 /** Class representing a Line.

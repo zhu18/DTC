@@ -37,7 +37,8 @@ const inputOptions = {
     progress({
       clearLine: false
     })
-  ]
+  ],
+  external: ['three']
 };
 const inputOptionsMinify = {
   input: './src/index.js',
@@ -62,7 +63,8 @@ const inputOptionsMinify = {
     progress({
       clearLine: false
     })
-  ]
+  ],
+  external: ['three']
 };
 const outputOptions = {
   file: `./dist/dtc.${params.format || 'es'}.js`,

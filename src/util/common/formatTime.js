@@ -4,7 +4,7 @@
  * @param { string } timeStamp 时间戳
  * @param { Boolean } needHMS 是否需要小时 分钟 秒。
  * @param { string } [type='/'] 时间之间的连接符 默认是 '/' 如果传入字符串 '年月日' 则返回带年月日中文的日期 。
- * @returns {String} 
+ * @returns {String}
  * @author 陈胜  <chensheng@jusfoun.com>
  * @example
  *  const timestamp=new Date().getTime();
@@ -41,4 +41,4 @@ function formatTime(timeStamp, needHMS, type) {
 }
 
 
-module.exports = formatTime
+export default formatTime

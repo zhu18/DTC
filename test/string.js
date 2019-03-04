@@ -1,6 +1,6 @@
 const assert = require('chai').assert
 const expect = require('chai').expect
-const util = require('../dist/dtc.util.umd')
+const util = require('../dist/dtc.util.umd').default
 
 describe('String', function () {
   // trim

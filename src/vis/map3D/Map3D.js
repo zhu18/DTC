@@ -7,8 +7,9 @@
  */
 
 import Detector from './Detector.js'
-// import * as THREE from './three.js'
-import THREE from './main'
+import * as THREE from 'three'
+import OrbitControls from './OrbitControls'
+import Event from "./Event"
 
 import * as $ from './util'
 import Font3D from './Font3D.js'
@@ -503,16 +504,16 @@ class Map3D{
    * @private
    */
   initEvent(){
-    this.__event=new THREE.Event(this);
+    this.__event=new Event(this);
   }
 
   /**
-   * 初始化控制器,返回{@link https://threejs.org/docs/#examples/controls/OrbitControls|THREE.OrbitControls}
-   * @returns {THREE.OrbitControls}
+   * 初始化控制器,返回{@link https://threejs.org/docs/#examples/controls/OrbitControls|OrbitControls}
+   * @returns {OrbitControls}
    */
   initControls(){
     if(!this.hasControls)return
-    this.controls = new THREE.OrbitControls(this.camera,this.renderer.domElement);
+    this.controls = new OrbitControls(this.camera,this.renderer.domElement);
     this.controls.userPan=false;
     this.controls.autoRotate=this.autoRotate;
     this.controls.userPanSpeed=1;

@@ -6,11 +6,9 @@
  * @module Map3D
  */
 
-// import * as THREE from './three.js'
-import THREE from './main'
+import * as THREE from 'three'
 import TWEEN from './tween.min.js'
 import * as $ from './util'
-
 
 /**
  * 地图标注,继承{@link https://threejs.org/docs/#api/objects/Sprite|THREE.Sprite}

@@ -12,4 +12,4 @@ function concat(...args) {
     return [].concat.apply([], args);
 }
 
-module.exports = concat
+export default concat

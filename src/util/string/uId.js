@@ -27,4 +27,4 @@ function uId(length = 6) {
   return id.make(length)
 }
 
-module.exports = uId
+export default uId
