@@ -8304,8 +8304,12 @@ function BakcToTop() {
   var threshold = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 300;
   var ele = arguments.length > 1 ? arguments[1] : undefined;
   var property = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  if (!(this instanceof BakcToTop)) {
+    throw new Error('调用方式错误，缺少关键字new');
+  }
   var dom = null;
-  var scrollTop = getScrollTop();
+  var scrollTop = getScrollTop(),
+      offsetWidth = document.body.offsetWidth;
   if (!ele) {
     dom = defaultDom();
     var root = document.querySelector('body');
@@ -8330,16 +8334,26 @@ function BakcToTop() {
   Object.assign(prop, property);
   for (var p in prop) {
     dom.style.setProperty(p, prop[p]);
-  }
+  } // 添加点击事件
   dom.addEventListener('click', function (ev) {
     ev.stopPropagation();
     scrollToTop();
     hide();
   });
-  window.addEventListener('scroll', debounce(function () {
-    scrollTop = getScrollTop();
-    isShow();
-  }, 100));
+  window.addEventListener('scroll', scrollCb);
+  window.addEventListener('resize', resizeCb);
+  function scrollCb() {
+    debounce(function () {
+      scrollTop = getScrollTop();
+      isShow();
+    }, 100)();
+  }
+  function resizeCb() {
+    debounce(function () {
+      offsetWidth = document.body.offsetWidth;
+      isShow();
+    }, 100)();
+  }
   function getScrollTop() {
     return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
   }
@@ -8351,7 +8365,7 @@ function BakcToTop() {
     scrollTop = 0;
   }
   function isShow() {
-    if (scrollTop > threshold) {
+    if (offsetWidth > 960 && scrollTop > threshold) {
       show();
     } else {
       hide();
@@ -8368,6 +8382,11 @@ function BakcToTop() {
   } // 实例方法
   this.getDom = function () {
     return dom;
+  }; // 销毁实例对象
+  this.dispose = function () {
+    window.removeEventListener('scroll', scrollCb);
+    window.removeEventListener('resize', resizeCb);
+    dom.remove();
   };
 }
 

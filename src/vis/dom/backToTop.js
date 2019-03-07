@@ -83,8 +83,12 @@ function defaultDom() {
  * @param {object} [property={}] 元素自定义属性
  */
 function BakcToTop(threshold = 300, ele, property = {}) {
+  if (!(this instanceof BakcToTop)) {
+    throw new Error('调用方式错误，缺少关键字new')
+  }
   let dom = null
-  let scrollTop = getScrollTop()
+  let scrollTop = getScrollTop(),
+    offsetWidth = document.body.offsetWidth
   if (!ele) {
     dom = defaultDom()
     let root = document.querySelector('body')
@@ -112,16 +116,28 @@ function BakcToTop(threshold = 300, ele, property = {}) {
   for (let p in prop) {
     dom.style.setProperty(p, prop[p])
   }
-
+  // 添加点击事件
   dom.addEventListener('click', function (ev) {
     ev.stopPropagation();
     scrollToTop()
     hide()
   })
-  window.addEventListener('scroll', debounce(() => {
-    scrollTop = getScrollTop()
-    isShow()
-  }, 100))
+  window.addEventListener('scroll', scrollCb)
+  window.addEventListener('resize', resizeCb)
+
+  function scrollCb() {
+    debounce(() => {
+      scrollTop = getScrollTop()
+      isShow()
+    }, 100)()
+  }
+
+  function resizeCb() {
+    debounce(() => {
+      offsetWidth = document.body.offsetWidth
+      isShow()
+    }, 100)()
+  }
 
   function getScrollTop() {
     return window.pageYOffset ||
@@ -138,7 +154,7 @@ function BakcToTop(threshold = 300, ele, property = {}) {
   }
 
   function isShow() {
-    if (scrollTop > threshold) {
+    if (offsetWidth > 960 && scrollTop > threshold) {
       show()
     } else {
       hide()
@@ -158,6 +174,12 @@ function BakcToTop(threshold = 300, ele, property = {}) {
   // 实例方法
   this.getDom = function () {
     return dom
+  }
+  // 销毁实例对象
+  this.dispose = function () {
+    window.removeEventListener('scroll', scrollCb)
+    window.removeEventListener('resize', resizeCb)
+    dom.remove()
   }
 }
 export default BakcToTop
