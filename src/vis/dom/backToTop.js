@@ -83,9 +83,6 @@ function defaultDom() {
  * @param {object} [property={}] 元素自定义属性
  */
 function BakcToTop(threshold = 300, ele, property = {}) {
-  if (!(this instanceof BakcToTop)) {
-    throw new Error('调用方式错误，缺少关键字new')
-  }
   let dom = null
   let scrollTop = getScrollTop(),
     offsetWidth = document.body.offsetWidth

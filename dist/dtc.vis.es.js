@@ -4011,11 +4011,6 @@ function BakcToTop() {
   var threshold = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 300;
   var ele = arguments.length > 1 ? arguments[1] : undefined;
   var property = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-  if (!(this instanceof BakcToTop)) {
-    throw new Error('调用方式错误，缺少关键字new');
-  }
-
   var dom = null;
   var scrollTop = getScrollTop(),
       offsetWidth = document.body.offsetWidth;
