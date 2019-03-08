@@ -15,7 +15,7 @@
     "build-umd-sub": "node rollup.config.sub.js -c format=umd name=dtc",
     "test": "mocha --recursive"
   },
-  "main": "./dist/dtc.esm.min.js",
+  "main": "./dist/dtc.es.min.js",
   "engines": {
     "node": ">= 1.0.0"
   },
