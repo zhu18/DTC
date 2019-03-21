@@ -3,7 +3,7 @@
  * @memberof  util
  * @param { Array } arr 多个数组
  * @returns {Array}
- * @author 魏彬  <weibin@jusfoun.comxxxx>
+ * @author
  * @example
  *   dtc.util.concat([1,2],[3,4],[5,6]) //[1,2,3,4,5,6]
  */

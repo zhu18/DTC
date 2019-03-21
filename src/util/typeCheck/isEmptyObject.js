@@ -2,7 +2,7 @@
  * 判断是否是对象是否为空。
  * @memberof  util
  * @param {Object} val 要判断的对象
- * @author 王帅  <ws@jusfoun.com>
+ * @author
  * @example
  * dtc.util.isObjectEmpty({}) //true
  *

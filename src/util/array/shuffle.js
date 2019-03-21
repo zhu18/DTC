@@ -3,7 +3,7 @@
  * @memberof  util
  * @param { Array } arr 数组
  * @returns {Array}
- * @author 魏彬  <weibin@jusfoun.com>
+ * @author
  * @example
  *   dtc.util.shuffle([1,2,3,4,5,6]) //[3, 4, 6, 2, 5, 1]
  */

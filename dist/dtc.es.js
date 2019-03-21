@@ -1,6 +1,6 @@
 
 /**
-  * dtc V1.0.3
+  * dtc V1.0.5
   * (c) 2018-2019
   * Copyright all contributors
   * @license Released under MIT license.
@@ -12,7 +12,7 @@ import { EventDispatcher, Vector3, MOUSE, Quaternion, Spherical, Vector2, Raycas
  * @memberof  util
  * @param { Array } arr 多个数组
  * @returns {Array}
- * @author 魏彬  <weibin@jusfoun.comxxxx>
+ * @author
  * @example
  *   dtc.util.concat([1,2],[3,4],[5,6]) //[1,2,3,4,5,6]
  */
@@ -28,7 +28,7 @@ function concat() {
  * @memberof  util
  * @param { Array } arr 数组
  * @returns {Array}
- * @author 魏彬  <weibin@jusfoun.com>
+ * @author
  * @example
  *   dtc.util.shuffle([1,2,3,4,5,6]) //[3, 4, 6, 2, 5, 1]
  */
@@ -466,7 +466,7 @@ function min(array) {
  * @memberof  util
  * @param { Array } arr 数组
  * @returns {Array}
- * @author 魏彬  <weibin@jusfoun.com>
+ * @author
  * @example
  * const a = [1,1,2,3,3,5,6]
  * dtc.util.unique(a) //[1,2,3,5,6]
@@ -874,7 +874,7 @@ function Browser() {
 /**
  * 取得URL的search信息转为对象形式
  * @memberof  util
- * @author 韩凯波  <hkb@jusfoun.com>
+ * @author
  * @example
  *   http://example.com/index.html?x=12&b=13
  *   dtc.util.urlArgs() // {x:12,b:13}
@@ -4248,7 +4248,7 @@ function typeOf(input) {
  * @param {String} name cookie名称
  * @param {String} value cookie值
  * @param {Number} days 过期时间（天数）
- * @author 褚甜甜  <ctt@jusfoun.com>
+ * @author
  * @example
  *   dtc.util.cookieSet('cookieName','value',expires)
  */
@@ -4266,7 +4266,7 @@ function cookieSet(name, value, days) {
  * 删除cookie。
  * @memberof  util
  * @param { String } c_name cookie名称
- * @author 褚甜甜  <ctt@jusfoun.com>
+ * @author
  * @example
  *   dtc.util.cookieDel('cookieName')
  */
@@ -4278,7 +4278,7 @@ function cookieDel(name) {
  * 取得cookie,如果没有找到则返回null
  * @memberof  util
  * @param { String } name cookie名称
- * @author 褚甜甜  <ctt@jusfoun.com>
+ * @author
  * @example
  *   dtc.util.cookieGet('cookieName')
  */
@@ -4298,7 +4298,7 @@ function cookieGet(name) {
 /**
  * 根据给定的字符长度截取文本，如果文本被截取，那么它的后面会自动带上省略号
  * @memberof util
- * @author 汝银娟（ryj@jusfoun.com）
+ * @author
  * @param {string}str  字符串
  * @param {number}nwords  截取长度
  * @return {string} 截取后的字符串
@@ -4456,7 +4456,7 @@ var isArray$2 = Array.isArray;
  * 判断是否是对象是否为空。
  * @memberof  util
  * @param {Object} val 要判断的对象
- * @author 王帅  <ws@jusfoun.com>
+ * @author
  * @example
  * dtc.util.isObjectEmpty({}) //true
  *

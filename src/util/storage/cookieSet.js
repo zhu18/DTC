@@ -4,7 +4,7 @@
  * @param {String} name cookie名称
  * @param {String} value cookie值
  * @param {Number} days 过期时间（天数）
- * @author 褚甜甜  <ctt@jusfoun.com>
+ * @author
  * @example
  *   dtc.util.cookieSet('cookieName','value',expires)
  */

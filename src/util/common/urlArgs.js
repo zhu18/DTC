@@ -1,7 +1,7 @@
 /**
  * 取得URL的search信息转为对象形式
  * @memberof  util
- * @author 韩凯波  <hkb@jusfoun.com>
+ * @author
  * @example
  *   http://example.com/index.html?x=12&b=13
  *   dtc.util.urlArgs() // {x:12,b:13}

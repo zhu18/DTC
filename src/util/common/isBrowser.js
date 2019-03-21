@@ -1,7 +1,7 @@
 /**
  * isBrowser类 判断浏览器及浏览器版本234.
  * @memberof util
- * @author 陈胜  <chensheng@jusfoun.com>
+ * @author
  * @example
  *    let s =  JFE.util.isBrowser().s
       let type =  JFE.util.isBrowser().type

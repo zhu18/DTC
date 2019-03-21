@@ -3,7 +3,7 @@
  * @memberof  util
  * @param { Array } arr 数组
  * @returns {Array}
- * @author 魏彬  <weibin@jusfoun.com>
+ * @author
  * @example
  * const a = [1,1,2,3,3,5,6]
  * dtc.util.unique(a) //[1,2,3,5,6]

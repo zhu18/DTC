@@ -2,7 +2,7 @@
  * 取得cookie,如果没有找到则返回null
  * @memberof  util
  * @param { String } name cookie名称
- * @author 褚甜甜  <ctt@jusfoun.com>
+ * @author
  * @example
  *   dtc.util.cookieGet('cookieName')
  */
