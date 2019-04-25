@@ -47,7 +47,7 @@ fs.readdir('./src/', function (err, files) {
         file: `./dist/dtc.${v}.${params.format || 'es'}.js`,
         format: params.format || 'es',
         banner: config.banner,
-        name: params.name || '',
+        name: params.format === 'umd' ? `${v}` : '',
         exports: 'named'
       });
       fileListMinfy[i] = await rollup.rollup({
@@ -78,7 +78,7 @@ fs.readdir('./src/', function (err, files) {
         file: `./dist/dtc.${v}.${params.format || 'es'}.min.js`,
         format: params.format || 'es',
         banner: config.banner,
-        name: params.name || '',
+        name: params.format === 'umd' ? `${v}` : '',
         exports: 'named'
       });
     }

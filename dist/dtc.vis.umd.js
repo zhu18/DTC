@@ -8,7 +8,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('three')) :
   typeof define === 'function' && define.amd ? define(['exports', 'three'], factory) :
-  (global = global || self, factory(global.dtc = {}, global.THREE));
+  (global = global || self, factory(global.vis = {}, global.THREE));
 }(this, function (exports, THREE) { 'use strict';
 
   function _typeof(obj) {

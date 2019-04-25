@@ -12,7 +12,7 @@
     "build-esm": "node rollup.config.js -c",
     "build-umd": "node rollup.config.js -c format=umd name=dtc",
     "build-esm-sub": "node rollup.config.sub.js -c",
-    "build-umd-sub": "node rollup.config.sub.js -c format=umd name=dtc",
+    "build-umd-sub": "node rollup.config.sub.js -c format=umd",
     "test": "mocha --recursive"
   },
   "main": "./dist/dtc.es.min.js",
