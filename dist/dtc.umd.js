@@ -1,15 +1,15 @@
 
 /**
-  * dtc V1.0.5
+  * dtc V1.0.6
   * (c) 2018-2019
   * Copyright all contributors
   * @license Released under MIT license.
   */
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('three')) :
-    typeof define === 'function' && define.amd ? define(['three'], factory) :
-    (global = global || self, factory(global.THREE));
-}(this, function (THREE) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('three')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'three'], factory) :
+    (global = global || self, factory(global.dtc = {}, global.THREE));
+}(this, function (exports, THREE) { 'use strict';
 
     /**
      * 合并多个数组为一个数组。
@@ -8833,23 +8833,19 @@
       annyang: annyang
     };
 
-    /* export default {
-      util,
-      vis,
-      dev,
-      voice
-    }
-    export {
-      util,
-      vis,
-      dev,
-      voice
-    } */
-    module.exports = {
+    var index = {
       util: util,
       vis: vis,
       dev: dev,
       voice: voice
     };
+
+    exports.default = index;
+    exports.util = util;
+    exports.vis = vis;
+    exports.dev = dev;
+    exports.voice = voice;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
 
 }));

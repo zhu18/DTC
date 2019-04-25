@@ -3,7 +3,7 @@ import vis from './vis/index'
 import dev from './dev/index'
 import voice from './voice/index'
 
-/* export default {
+export default {
   util,
   vis,
   dev,
@@ -14,11 +14,4 @@ export {
   vis,
   dev,
   voice
-} */
-module.exports = {
-  util,
-  vis,
-  dev,
-  voice
 }
-

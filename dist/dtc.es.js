@@ -1,6 +1,6 @@
 
 /**
-  * dtc V1.0.5
+  * dtc V1.0.6
   * (c) 2018-2019
   * Copyright all contributors
   * @license Released under MIT license.
@@ -8829,21 +8829,12 @@ var voice = {
   annyang: annyang
 };
 
-/* export default {
-  util,
-  vis,
-  dev,
-  voice
-}
-export {
-  util,
-  vis,
-  dev,
-  voice
-} */
-module.exports = {
+var index = {
   util: util,
   vis: vis,
   dev: dev,
   voice: voice
 };
+
+export default index;
+export { util, vis, dev, voice };
