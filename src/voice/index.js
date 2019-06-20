@@ -1,13 +1,13 @@
-import synthesis from './synthesis'
+import Synthesis from './synthesis'
 // const annyang = require('./annyang.js')
 import annyang from './annyang'
 
 export default {
-  synthesis,
+  Synthesis,
   annyang
 }
 
 export {
-  synthesis,
+  Synthesis,
   annyang
 }

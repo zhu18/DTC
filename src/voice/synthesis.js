@@ -20,31 +20,53 @@ function isSupport() {
   })
 } */
 
-function synthesis(text, option = {}) {
+function Synthesis(option = {}) {
+  if (!Synthesis.single_instance) {
+    Synthesis.single_instance = this;
+  }
   option = Object.assign({
     lang: 'zh-CN',
     volume: 1,
-    rate: 0.7,
+    rate: 0.8,
     pitch: 1
   }, option)
   // 检测支持情况
   if (!isSupport()) {
     console.log('your browser do net support the API, visit https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance get more infomation')
-    return
+    return null
   }
+  const synth = window.speechSynthesis
   // 合成实例对象
   const utterance = new SpeechSynthesisUtterance()
-  utterance.text = text
-  utterance.lang = option.lang
-  utterance.volume = option.volume
-  utterance.rate = option.rate
-  utterance.pitch = option.pitch
-  window.speechSynthesis.speak(utterance);
-  SpeechSynthesisUtterance.prototype.speak = function (txt = '') {
-    this.text = txt
-    window.speechSynthesis.speak(this);
+  const keys = Object.keys(option)
+  keys.forEach(key => {
+    utterance[key] = option[key]
+  })
+  // 获取配置项目
+
+  this.speak = function (txt) {
+    if (!txt) return
+    utterance.text = txt
+    synth.speak(utterance);
   }
-  return utterance
+  this.cancle = function () {
+    synth.cancle();
+  }
+  this.setOption = function (opt = {}) {
+    Object.assign(option, opt)
+    const keys = Object.keys(option)
+    keys.forEach(key => {
+      utterance[key] = option[key]
+    })
+  }
+  this.addEventListener = function (type, callback) {
+    utterance.addEventListener(type, callback)
+  }
+  this.getOption = function() {
+  const {lang, volume, rate, pitch} = utterance
+    return {lang, volume, rate, pitch}
+  }
+  return Synthesis.single_instance
 }
 
-export default synthesis
+export default Synthesis
