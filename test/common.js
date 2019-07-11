@@ -23,4 +23,9 @@ describe('Common', function () {
       expect(util.moment('1911-9-1 13:09:07').format('MMMM yyyy hA www')).to.be.equal('九月 1911 1PM 周五')
     })
   })
+  describe('qs', function() {
+    it('should from Object to pair', function() {
+      expect(util.qs.stringify({ a: 'b' })).to.be.equal('a=b')
+    })
+  })
 })

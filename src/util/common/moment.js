@@ -109,7 +109,6 @@ var D = (function () {
       return l[this.$L]
     },
     d.format = function (t) {
-      console.log(this.$d);
       var e = this, n = t || 'yyyy-MM-ddTHH:mm:ssZ',
         r = p.padZoneStr(this.$d.getTimezoneOffset()),
         s = this.$locale(), i = s.weekdays, a = s.months,

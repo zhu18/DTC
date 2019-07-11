@@ -11,6 +11,7 @@ import Browser from './browser/browser'
 /*-------------commmon----------------*/
 import urlArgs from './common/urlArgs'
 import moment from './common/moment'
+import qs from './common/qs.js'
 
 /*-------------object----------------*/
 import eq from './object/eq'
@@ -53,6 +54,7 @@ export default {
   /*--common--*/
   urlArgs,
   moment,
+  qs,
   /*--object--*/
   eq,
   isEqual,

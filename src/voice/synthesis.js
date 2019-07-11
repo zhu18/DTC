@@ -49,8 +49,8 @@ function Synthesis(option = {}) {
     utterance.text = txt
     synth.speak(utterance);
   }
-  this.cancle = function () {
-    synth.cancle();
+  this.cancel = function () {
+    synth.cancel();
   }
   this.setOption = function (opt = {}) {
     Object.assign(option, opt)
@@ -63,8 +63,12 @@ function Synthesis(option = {}) {
     utterance.addEventListener(type, callback)
   }
   this.getOption = function() {
-  const {lang, volume, rate, pitch} = utterance
+    const {lang, volume, rate, pitch} = utterance
     return {lang, volume, rate, pitch}
+  }
+  this.getStatus = function () {
+    const { paused,pending,speaking } = synth
+    return { paused,pending,speaking }
   }
   return Synthesis.single_instance
 }

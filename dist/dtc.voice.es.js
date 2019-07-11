@@ -1,6 +1,6 @@
 
 /**
-  * dtc V1.0.6
+  * dtc V1.0.7
   * (c) 2018-2019
   * Copyright all contributors
   * @license Released under MIT license.
@@ -29,36 +29,81 @@ function isSupport() {
 } */
 
 
-function synthesis(text) {
-  var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+function Synthesis() {
+  var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  if (!Synthesis.single_instance) {
+    Synthesis.single_instance = this;
+  }
+
   option = Object.assign({
     lang: 'zh-CN',
     volume: 1,
-    rate: 0.7,
+    rate: 0.8,
     pitch: 1
   }, option); // 检测支持情况
 
   if (!isSupport()) {
     console.log('your browser do net support the API, visit https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance get more infomation');
-    return;
-  } // 合成实例对象
+    return null;
+  }
 
+  var synth = window.speechSynthesis; // 合成实例对象
 
   var utterance = new SpeechSynthesisUtterance();
-  utterance.text = text;
-  utterance.lang = option.lang;
-  utterance.volume = option.volume;
-  utterance.rate = option.rate;
-  utterance.pitch = option.pitch;
-  window.speechSynthesis.speak(utterance);
+  var keys = Object.keys(option);
+  keys.forEach(function (key) {
+    utterance[key] = option[key];
+  }); // 获取配置项目
 
-  SpeechSynthesisUtterance.prototype.speak = function () {
-    var txt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-    this.text = txt;
-    window.speechSynthesis.speak(this);
+  this.speak = function (txt) {
+    if (!txt) return;
+    utterance.text = txt;
+    synth.speak(utterance);
   };
 
-  return utterance;
+  this.cancel = function () {
+    synth.cancel();
+  };
+
+  this.setOption = function () {
+    var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    Object.assign(option, opt);
+    var keys = Object.keys(option);
+    keys.forEach(function (key) {
+      utterance[key] = option[key];
+    });
+  };
+
+  this.addEventListener = function (type, callback) {
+    utterance.addEventListener(type, callback);
+  };
+
+  this.getOption = function () {
+    var lang = utterance.lang,
+        volume = utterance.volume,
+        rate = utterance.rate,
+        pitch = utterance.pitch;
+    return {
+      lang: lang,
+      volume: volume,
+      rate: rate,
+      pitch: pitch
+    };
+  };
+
+  this.getStatus = function () {
+    var paused = synth.paused,
+        pending = synth.pending,
+        speaking = synth.speaking;
+    return {
+      paused: paused,
+      pending: pending,
+      speaking: speaking
+    };
+  };
+
+  return Synthesis.single_instance;
 }
 
 function _typeof(obj) {
@@ -294,9 +339,9 @@ var annyang = createCommonjsModule(function (module) {
 });
 
 var index = {
-  synthesis: synthesis,
+  Synthesis: Synthesis,
   annyang: annyang
 };
 
 export default index;
-export { synthesis, annyang };
+export { Synthesis, annyang };
